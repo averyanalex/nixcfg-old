@@ -38,6 +38,8 @@
     # };
   };
 
+  networking.useDHCP = false;
+
   nix = {
     settings = {
       auto-optimise-store = true;
