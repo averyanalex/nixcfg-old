@@ -11,8 +11,8 @@
     "net.ipv4.conf.all.forwarding" = true;
     "net.ipv4.conf.default.forwarding" = true;
 
-    "net.ipv6.conf.all.accept_ra" = 2;
-    "net.ipv6.conf.default.accept_ra" = 2;
+    "net.ipv6.conf.all.accept_ra" = 0;
+    "net.ipv6.conf.default.accept_ra" = 0;
 
     "net.ipv6.conf.all.forwarding" = true;
     "net.ipv6.conf.default.forwarding" = true;
@@ -101,16 +101,15 @@
       '';
     };
 
-    # vlans = {
-    #   wan = {
-    #     id = 30;
-    #     interface = "enp6s0";
-    #   };
-    # };
+    vlans = {
+      wan = {
+        id = 30;
+        interface = "enp6s0";
+      };
+    };
 
     bridges = {
       lan.interfaces = [ "enp5s0" ];
-      wan.interfaces = [ "enp6s0" ];
     };
 
     interfaces = {
