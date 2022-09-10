@@ -101,17 +101,16 @@
       '';
     };
 
-    vlans = {
-      wan = {
-        id = 30;
-        interface = "enp6s0";
-      };
-    };
+    # vlans = {
+    #   wan = {
+    #     id = 30;
+    #     interface = "enp6s0";
+    #   };
+    # };
 
     bridges = {
-      lan = {
-        interfaces = [ "enp5s0" ];
-      };
+      lan.interfaces = [ "enp5s0" ];
+      wan.interfaces = [ "enp6s0" ];
     };
 
     interfaces = {
