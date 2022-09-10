@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 
+let
+  wan = "enp6s0";
+  physLan = "enp5s0";
+  lan = "lan0";
+in
 {
   imports = [
     ../modules
@@ -20,14 +25,14 @@
 
   services.dhcpd4 = {
     enable = true;
-    interfaces = [ "lan" ];
+    interfaces = [ "${lan}" ];
     extraConfig = ''
       option domain-name-servers 8.8.8.8, 1.1.1.1;
       option subnet-mask 255.255.255.0;
       subnet 192.168.3.0 netmask 255.255.255.0 {
         option broadcast-address 192.168.3.255;
         option routers 192.168.3.1;
-        interface lan;
+        interface ${lan};
         range 192.168.3.100 192.168.3.199;
       }
     '';
@@ -80,8 +85,8 @@
           chain forward {
             type filter hook forward priority 0;
 
-            iifname "lan" oifname "enp6s0" counter accept comment "allow LAN to WAN"
-            iifname "enp6s0" oifname "lan" ct state { established, related } counter accept comment "allow established back to LAN"
+            iifname "${lan}" oifname "${wan}" counter accept comment "allow LAN to WAN"
+            iifname "${wan}" oifname "${lan}" ct state { established, related } counter accept comment "allow established back to LAN"
 
             # ct status dnat counter accept comment "allow dnat forwarding"
             counter drop
@@ -95,16 +100,16 @@
 
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            oifname "enp6s0" masquerade
+            oifname "${wan}" masquerade
           }
         }
       '';
     };
 
-    bridges.lan.interfaces = [ "enp5s0" ];
+    bridges.${lan}.interfaces = [ "${physLan}" ];
 
     interfaces = {
-      lan = {
+      "${lan}" = {
         ipv4 = {
           addresses = [{
             address = "192.168.3.1";
@@ -112,7 +117,7 @@
           }];
         };
       };
-      enp6s0.useDHCP = true;
+      "${wan}".useDHCP = true;
     };
   };
 }
