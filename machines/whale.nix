@@ -80,8 +80,8 @@
           chain forward {
             type filter hook forward priority 0;
 
-            iifname "lan" oifname "wan" counter accept comment "allow LAN to WAN"
-            iifname "wan" oifname "lan" ct state { established, related } counter accept comment "allow established back to LAN"
+            iifname "lan" oifname "enp6s0" counter accept comment "allow LAN to WAN"
+            iifname "enp6s0" oifname "lan" ct state { established, related } counter accept comment "allow established back to LAN"
 
             # ct status dnat counter accept comment "allow dnat forwarding"
             counter drop
@@ -95,22 +95,13 @@
 
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            oifname "wan" masquerade
+            oifname "enp6s0" masquerade
           }
         }
       '';
     };
 
-    vlans = {
-      wan = {
-        id = 30;
-        interface = "enp6s0";
-      };
-    };
-
-    bridges = {
-      lan.interfaces = [ "enp5s0" ];
-    };
+    bridges.lan.interfaces = [ "enp5s0" ];
 
     interfaces = {
       lan = {
@@ -121,7 +112,7 @@
           }];
         };
       };
-      wan.useDHCP = true;
+      enp6s0.useDHCP = true;
     };
   };
 }
