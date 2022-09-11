@@ -41,6 +41,8 @@ in
   networking = {
     hostName = "whale";
 
+    nebula-averyan.enable = true;
+
     firewall.enable = false;
     nftables = {
       enable = true;

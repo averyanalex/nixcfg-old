@@ -13,5 +13,8 @@
     ./unstable.nix
     ./nur.nix
     ./dns.nix
+
+    ./nebula-averyan.nix
+    ./nebula-frsqr.nix
   ];
 }

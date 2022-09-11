@@ -18,7 +18,6 @@
     };
 
     nur.url = "github:nix-community/NUR";
-
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, nur }@attrs:
