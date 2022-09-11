@@ -42,6 +42,7 @@ in
     hostName = "whale";
 
     nebula-averyan.enable = true;
+    nebula-frsqr.enable = true;
 
     firewall.enable = false;
     nftables = {
