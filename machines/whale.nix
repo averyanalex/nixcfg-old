@@ -14,6 +14,7 @@ in
 
   virtualisation.libvirtd.enable = true;
   users.users.alex.extraGroups = [ "libvirtd" ];
+  virtualisation.libvirtd.allowedBridges = [ ];
 
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;
@@ -28,7 +29,7 @@ in
 
   services.dhcpd4 = {
     enable = true;
-    interfaces = [ "${lan}" ];
+    interfaces = [ "${lan}" "vm0" ];
     extraConfig = ''
       option domain-name-servers 8.8.8.8, 1.1.1.1;
       option subnet-mask 255.255.255.0;
@@ -37,6 +38,12 @@ in
         option routers 192.168.3.1;
         interface ${lan};
         range 192.168.3.100 192.168.3.199;
+      }
+      subnet 192.168.12.0 netmask 255.255.255.0 {
+        option broadcast-address 192.168.12.255;
+        option routers 192.168.12.1;
+        interface vm0;
+        range 192.168.12.100 192.168.12.199;
       }
     '';
   };
@@ -91,8 +98,8 @@ in
           chain forward {
             type filter hook forward priority 0;
 
-            iifname "${lan}" oifname "${wan}" counter accept comment "allow LAN to WAN"
-            iifname "${wan}" oifname "${lan}" ct state { established, related } counter accept comment "allow established back to LAN"
+            iifname { "${lan}", "vm0" } oifname "${wan}" counter accept comment "allow LAN to WAN"
+            iifname "${wan}" oifname { "${lan}", "vm0" } ct state { established, related } counter accept comment "allow established back to LAN"
 
             # ct status dnat counter accept comment "allow dnat forwarding"
             counter drop
@@ -112,13 +119,24 @@ in
       '';
     };
 
-    bridges.${lan}.interfaces = [ "${physLan}" ];
+    bridges = {
+      ${lan}.interfaces = [ "${physLan}" ];
+      vm0.interfaces = [ ];
+    };
 
     interfaces = {
       "${lan}" = {
         ipv4 = {
           addresses = [{
             address = "192.168.3.1";
+            prefixLength = 24;
+          }];
+        };
+      };
+      vm0 = {
+        ipv4 = {
+          addresses = [{
+            address = "192.168.12.1";
             prefixLength = 24;
           }];
         };
