@@ -13,6 +13,7 @@ in
   ];
 
   virtualisation.libvirtd.enable = true;
+  users.users.alex.extraGroups = [ "libvirtd" ];
 
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;
