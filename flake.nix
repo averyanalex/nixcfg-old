@@ -17,10 +17,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, nur }@attrs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, hyprland, nur }@attrs:
     {
       nixosConfigurations = {
         alligator = nixpkgs.lib.nixosSystem {
@@ -28,6 +33,13 @@
           specialArgs = attrs;
           modules = [
             ./machines/alligator.nix
+          ];
+        };
+        hamster = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = attrs;
+          modules = [
+            ./machines/hamster.nix
           ];
         };
         whale = nixpkgs.lib.nixosSystem {

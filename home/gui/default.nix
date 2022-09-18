@@ -2,6 +2,7 @@
   imports = [
     ./vscode.nix
     ./firefox.nix
-    ./sway.nix
+    # ./sway.nix
+    ./hyprland.nix
   ];
 }

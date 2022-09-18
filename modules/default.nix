@@ -4,7 +4,6 @@
   imports = [
     agenix.nixosModule
     home-manager.nixosModule
-
     # ./gui
 
     ./common.nix

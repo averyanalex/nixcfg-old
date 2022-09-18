@@ -34,4 +34,6 @@ in
   "secrets/nebula-frsqr/ca-crt.age".publicKeys = users ++ systems;
   "secrets/nebula-frsqr/whale-crt.age".publicKeys = users ++ systems;
   "secrets/nebula-frsqr/whale-key.age".publicKeys = users ++ [ whale ];
+  "secrets/nebula-frsqr/hamster-crt.age".publicKeys = users ++ systems;
+  "secrets/nebula-frsqr/hamster-key.age".publicKeys = users ++ [ hamster ];
 }
