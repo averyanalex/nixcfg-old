@@ -1,14 +1,6 @@
-{ lib, config, home-manager, hyprland, ... }:
+{ lib, config, ... }:
 
 {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-
-  home-manager.users.alex = lib.mkMerge [
-    (import (../home + "/machines/${config.networking.hostName}.nix"))
-    hyprland.homeManagerModules.default
-  ];
-
   age.secrets.password-alex.file = ../secrets/passwords/alex.age;
 
   users = {

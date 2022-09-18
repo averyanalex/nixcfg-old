@@ -2,15 +2,11 @@
 
 {
   home.packages = with pkgs; [
-    # sway
-    # wl-clipboard # clipboard support
-    # TODO: change clipboard manager (CopyQ?)
-    # clipman # clipboard manager
-    # rofi-wayland # apps menu
-    # TODO: setup dunst
-    # mako # notifications
-    gnome3.adwaita-icon-theme # icons
-    pulseaudio # volume control
+    # clipboard
+    wl-clipboard
+
+    # icons
+    gnome3.adwaita-icon-theme
 
     # keyring
     gnome.seahorse
@@ -28,19 +24,13 @@
     meslo-lgs-nf
     # (nerdfonts.override { fonts = [ "Meslo" ]; })
 
-    xfce.thunar # file manager
+    # file manager
+    xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
     xfce.tumbler # previews
   ];
-
-  programs.bash.enable = true;
-  # programs.bash.profileExtra = ''
-  #   if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  #     sway
-  #   fi
-  # '';
 
   fonts.fontconfig.enable = true;
 

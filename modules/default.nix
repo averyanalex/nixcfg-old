@@ -8,6 +8,8 @@
 
     ./common.nix
     ./users.nix
+    ./home.nix
+    ./desktop.nix
     ./ssh.nix
     ./unstable.nix
     ./nur.nix

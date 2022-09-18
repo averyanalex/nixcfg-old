@@ -7,6 +7,8 @@
     ../mounts/hamster.nix
   ];
 
+  isDesktop = true;
+
   networking = {
     hostName = "hamster";
 

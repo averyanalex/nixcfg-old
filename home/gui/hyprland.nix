@@ -5,6 +5,11 @@
     ./wm.nix
   ];
 
+  home.packages = with pkgs; [
+    grim
+    slurp
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     recommendedEnvironment = true;
@@ -59,6 +64,16 @@
       bind=SUPER,space,togglefloating,
       bind=SUPER,D,exec,rofi -show drun
 
+      bind=,xf86monbrightnessup,exec,light -A 10
+      bind=,xf86monbrightnessdown,exec,light -U 10
+      bind=,xf86audioraisevolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%
+      bind=,xf86audiolowervolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%
+      bind=,xf86audiomute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle
+      bind=,xf86audiomicmute,exec,exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+      bind=,print,exec,grim -g "$(slurp -d)" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png
+      bind=SHIFT,print,exec,grim - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png
+
       bind=SUPER,left,movefocus,l
       bind=SUPER,right,movefocus,r
       bind=SUPER,up,movefocus,u
@@ -96,6 +111,13 @@
       exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     '';
   };
+
+  programs.bash.enable = true;
+  programs.bash.profileExtra = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      Hyprland
+    fi
+  '';
 
   programs.rofi = {
     enable = true;

@@ -1,6 +1,9 @@
 {
   imports = [
-    ./terminal
+    ./gpg
+    ./zsh
+    ./git.nix
+    ./apps.nix
   ];
 
   programs.home-manager.enable = true;

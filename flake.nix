@@ -27,6 +27,9 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, hyprland, nur }@attrs:
     {
+      nixosModules = {
+        home-headless = import ./home;
+      };
       nixosConfigurations = {
         alligator = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
