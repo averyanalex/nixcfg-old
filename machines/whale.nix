@@ -72,6 +72,7 @@ in
 
             iifname lo counter accept comment "accept any localhost traffic"
             tcp dport 22 counter accept comment "ssh"
+            iifname "nebula.frsqr" tcp dport 9100 counter accept comment "node exporter"
 
             ip6 nexthdr icmpv6 icmpv6 type {
               destination-unreachable,
