@@ -16,6 +16,9 @@
   networking = {
     hostName = "alligator";
 
+    nebula-averyan.enable = true;
+    nebula-frsqr.enable = true;
+
     defaultGateway = {
       address = "192.168.3.1";
       interface = "enp10s0";
