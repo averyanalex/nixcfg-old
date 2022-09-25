@@ -30,12 +30,12 @@
 
   system = {
     stateVersion = "22.05";
-    # autoUpgrade = {
-    #   enable = true;
-    #   allowReboot = false;
-    #   flake = "git+https://git.frsqr.xyz/firesquare/nixos.git?ref=main";
-    #   dates = "4:45";
-    # };
+    autoUpgrade = {
+      enable = true;
+      allowReboot = false;
+      flake = "git+https://git.frsqr.xyz/averyanalex/nixos.git?ref=main";
+      dates = "4:45";
+    };
   };
 
   networking.useDHCP = false;
