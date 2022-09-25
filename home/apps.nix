@@ -6,6 +6,7 @@
     htop
     killall
     smartmontools
+    ncdu
     micro
   ];
 }

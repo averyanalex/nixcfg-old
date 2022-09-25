@@ -1,38 +1,35 @@
-{ config, pkgs, lib, ... }:
+{ lib, pkgs, config, ... }:
 
+let
+  fancylock = pkgs.writeShellScript "fancylock" ''
+    swaylock \
+    	--screenshots \
+    	--clock \
+    	--indicator \
+    	--indicator-radius 100 \
+    	--indicator-thickness 7 \
+    	--effect-blur 9x15 \
+    	--effect-vignette 0.5:0.5 \
+    	--ring-color bb00cc \
+    	--key-hl-color 880033 \
+    	--line-color 00000000 \
+    	--inside-color 00000088 \
+    	--separator-color 00000000 \
+    	--fade-in 1.5 \
+      "$@"
+  '';
+  idlehandler = pkgs.writeShellScript "idlehandler" ''
+    swayidle -w timeout 300 '${fancylock} --grace 60'
+  '';
+in
 {
+  imports = [
+    ./wm.nix
+  ];
+
   home.packages = with pkgs; [
-    # sway
-    wl-clipboard # clipboard support
-    # TODO: change clipboard manager (CopyQ?)
-    clipman # clipboard manager
-    # rofi-wayland # apps menu
-    # TODO: setup dunst
-    mako # notifications
-    gnome3.adwaita-icon-theme # icons
-    pulseaudio # volume control
-
-    # keyring
-    gnome.seahorse
-    gnome.gnome-keyring
-    gcr
-
-    # fonts
-    dejavu_fonts
-    freefont_ttf
-    gyre-fonts # TrueType substitutes for standard PostScript fonts
-    liberation_ttf
-    unifont
-    noto-fonts-emoji
-    noto-fonts-cjk
-    meslo-lgs-nf
-    # (nerdfonts.override { fonts = [ "Meslo" ]; })
-
-    xfce.thunar # file manager
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.tumbler # previews
+    swayidle
+    swaylock-effects
   ];
 
   programs.bash.enable = true;
@@ -41,8 +38,6 @@
       sway
     fi
   '';
-
-  fonts.fontconfig.enable = true;
 
   wayland.windowManager.sway = {
     # TODO: random wallpaper from ~/Pictures/Wallpapers/3440x1440
@@ -86,8 +81,8 @@
           "XF86MonBrightnessDown" = "exec light -U 10";
           "XF86MonBrightnessUp" = "exec light -A 10";
 
-          "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
-          "Shift+Print" = ''exec ${pkgs.grim}/bin/grim - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
+          "Print" = ''exec grim -g "$(slurp -d)" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
+          "Shift+Print" = ''exec grim - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
           # TODO: screenshot focused window
           # "Mod1+Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
           # TODO: setup flameshot
@@ -104,8 +99,8 @@
       # exec ${pkgs.unstable.wayvnc}/bin/wayvnc --gpu
 
       # clipboard
-      exec clipman restore
-      exec wl-paste -t text --watch clipman store
+      # exec clipman restore
+      # exec wl-paste -t text --watch clipman store
 
       # STYLING
       gaps inner 5
@@ -116,17 +111,13 @@
       for_window [shell="xdg_shell"] title_format "%title (%app_id)"
       for_window [shell="x_wayland"] title_format "%class - %title"
 
+      exec waybar
+      exec ${idlehandler}
+
       # AUTOSTART
       # exec telegram-desktop -startintray
       # exec element-desktop --hidden
     '';
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font.normal.family = "MesloLGS NF";
-    };
   };
 
   programs.rofi = {
@@ -149,22 +140,13 @@
     #       format = "{ifname}";
     #       format-wifi = "{essid} ({signalStrength}%)";
     #       format-ethernet = "{ifname}";
-  	#       format-disconnected = "SUS";
+    #       format-disconnected = "SUS";
     #       tooltip-format = "{ifname}";
-  	#       tooltip-format-wifi = "{essid} ({signalStrength}%)";
-  	#       tooltip-format-ethernet = "{ifname}";
-  	#       tooltip-format-disconnected = "Disconnected";
+    #       tooltip-format-wifi = "{essid} ({signalStrength}%)";
+    #       tooltip-format-ethernet = "{ifname}";
+    #       tooltip-format-disconnected = "Disconnected";
     #     };
     #   };
     # };
-
-    systemd = {
-      enable = true;
-      target = "sway-session.target";
-    };
   };
-
-  services.gpg-agent.pinentryFlavor = "qt"; # TODO: fix gnome3 pinentry
-
-  services.gnome-keyring.enable = true;
 }

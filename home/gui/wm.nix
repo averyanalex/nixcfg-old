@@ -2,6 +2,10 @@
 
 {
   home.packages = with pkgs; [
+    # screenshots
+    grim
+    slurp
+
     # clipboard
     wl-clipboard
 
@@ -30,6 +34,9 @@
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
     xfce.tumbler # previews
+
+    # volume control
+    pulseaudio
   ];
 
   fonts.fontconfig.enable = true;

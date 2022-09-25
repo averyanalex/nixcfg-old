@@ -7,6 +7,12 @@
     ../mounts/alligator.nix
   ];
 
+  isDesktop = true;
+
+  home-manager.users.alex = {
+    wayland.windowManager.sway.config.output.DP-1.mode = "3440x1440@144Hz";
+  };
+
   networking = {
     hostName = "alligator";
 

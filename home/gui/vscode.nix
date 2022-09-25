@@ -40,8 +40,8 @@
       {
         name = "even-better-toml";
         publisher = "tamasfe";
-        version = "0.16.5";
-        sha256 = "pRUiXsZGhTIQx2Qx9NFQ7OGRros3KdzjUlq13nm4pAc=";
+        version = "0.18.1";
+        sha256 = "dTFIlNp3VUxS7r7g8ZwsEMeT5QSCS3kHN/LPtsHWrZ8=";
       }
       {
         name = "rust-analyzer";

@@ -9,6 +9,11 @@
 
   isDesktop = true;
 
+  virtualisation.docker.enable = true;
+  environment.systemPackages = [ pkgs.docker-compose_2 ];
+
+  services.blueman.enable = true;
+
   networking = {
     hostName = "hamster";
 

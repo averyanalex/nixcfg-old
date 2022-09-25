@@ -19,6 +19,12 @@
       gtkUsePortal = true;
     };
 
+    security.pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
+
     services.flatpak.enable = true;
     services.dbus.enable = true;
     services.gvfs.enable = true;

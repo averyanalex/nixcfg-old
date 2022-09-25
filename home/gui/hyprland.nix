@@ -1,5 +1,27 @@
 { pkgs, ... }:
 
+let
+  fancylock = pkgs.writeShellScript "fancylock" ''
+    swaylock \
+    	--screenshots \
+    	--clock \
+    	--indicator \
+    	--indicator-radius 100 \
+    	--indicator-thickness 7 \
+    	--effect-blur 9x15 \
+    	--effect-vignette 0.5:0.5 \
+    	--ring-color bb00cc \
+    	--key-hl-color 880033 \
+    	--line-color 00000000 \
+    	--inside-color 00000088 \
+    	--separator-color 00000000 \
+    	--fade-in 1.5 \
+      "$@"
+  '';
+  idlehandler = pkgs.writeShellScript "idlehandler" ''
+    swayidle -w timeout 300 '${fancylock} --grace 60'
+  '';
+in
 {
   imports = [
     ./wm.nix
@@ -8,6 +30,8 @@
   home.packages = with pkgs; [
     grim
     slurp
+    swayidle
+    swaylock-effects
   ];
 
   wayland.windowManager.hyprland = {
@@ -63,6 +87,7 @@
       bind=SUPER,return,exec,alacritty
       bind=SUPER,space,togglefloating,
       bind=SUPER,D,exec,rofi -show drun
+      bind=SUPER,L,exec,${fancylock} --grace 3
 
       bind=,xf86monbrightnessup,exec,light -A 10
       bind=,xf86monbrightnessdown,exec,light -U 10
@@ -107,6 +132,7 @@
       bind=SUPERSHIFT,0,movetoworkspacesilent,10
 
       exec-once=waybar
+      exec-once=${idlehandler}
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     '';
@@ -132,24 +158,24 @@
 
   programs.waybar = {
     enable = true;
-    package = pkgs.unstable.waybar.overrideAttrs (old: {
-      version = "710f895";
-      src = pkgs.fetchFromGitHub {
-        owner = "Alexays";
-        repo = "Waybar";
-        rev = "710f895";
-        sha256 = "sha256-kHkFRQwFPen4QbMdXODr8o+Ms0Ee3OGzqTTDjvel4xA=";
-      };
-      nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.unstable.cmake ];
-      buildInputs = old.buildInputs ++ [ pkgs.unstable.jack2 ];
-      mesonFlags = old.mesonFlags ++ [
-        "-Dexperimental=true"
-      ];
-      postPatch = ''
-        sed -i '1 i\#define HAVE_HYPRLAND' include/factory.hpp;
-        sed -i '1 i\#define HAVE_WLR' include/factory.hpp;
-      '';
-    });
+    # package = pkgs.unstable.waybar.overrideAttrs (old: {
+    #   version = "710f895";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "Alexays";
+    #     repo = "Waybar";
+    #     rev = "710f895";
+    #     sha256 = "sha256-kHkFRQwFPen4QbMdXODr8o+Ms0Ee3OGzqTTDjvel4xA=";
+    #   };
+    #   nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.unstable.cmake ];
+    #   buildInputs = old.buildInputs ++ [ pkgs.unstable.jack2 ];
+    #   mesonFlags = old.mesonFlags ++ [
+    #     "-Dexperimental=true"
+    #   ];
+    #   postPatch = ''
+    #     sed -i '1 i\#define HAVE_HYPRLAND' include/factory.hpp;
+    #     sed -i '1 i\#define HAVE_WLR' include/factory.hpp;
+    #   '';
+    # });
     settings = [{
       modules-left = [
         "tray"
@@ -167,6 +193,42 @@
         "network"
         "clock"
       ];
+      # cpu = {
+      #   format = "{icon} {usage}%";
+      # };
     }];
+    # style = ''
+    #   window#waybar {
+    #     background: #20262d;
+    #     color: #f1fcf9;
+    #   }
+
+    #   #memory {
+    #     background: #343b41;
+    #     padding: 5px;
+    #     margin: 3px;
+    #     margin-top: 5px;
+    #     margin-bottom: 5px;
+    #     border-radius: 7px;
+    #   }
+
+    #   #cpu {
+    #     background: #343b41;
+    #     padding: 5px;
+    #     margin: 3px;
+    #     margin-top: 5px;
+    #     margin-bottom: 5px;
+    #     border-radius: 7px;
+    #   }
+
+    #   #disk {
+    #     background: #343b41;
+    #     padding: 5px;
+    #     margin: 3px;
+    #     margin-top: 5px;
+    #     margin-bottom: 5px;
+    #     border-radius: 7px;
+    #   }
+    # '';
   };
 }
