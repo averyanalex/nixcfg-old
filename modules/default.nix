@@ -14,6 +14,7 @@
     ./nur.nix
     ./dns.nix
     ./syncthing.nix
+    ./monitoring.nix
 
     ./nebula-averyan.nix
     ./nebula-frsqr.nix
