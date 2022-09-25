@@ -18,7 +18,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    unstable.rocm-smi
+    rocm-smi
     unstable.rocminfo
   ];
 }
