@@ -10,6 +10,7 @@
   isDesktop = true;
   services.syncthing.enable = true;
 
+  virtualisation.podman.enable = true;
   virtualisation.docker.enable = true;
   environment.systemPackages = [ pkgs.docker-compose_2 ];
 
