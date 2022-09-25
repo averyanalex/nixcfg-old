@@ -48,6 +48,8 @@ in
     '';
   };
 
+  services.prometheus.exporters.node.enabledCollectors = [ "zoneinfo" ];
+
   networking = {
     hostName = "whale";
 
