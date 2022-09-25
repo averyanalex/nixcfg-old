@@ -27,6 +27,8 @@ in
     "net.ipv6.conf.default.forwarding" = true;
   };
 
+  hardware.ksm.enable = true;
+
   services.dhcpd4 = {
     enable = true;
     interfaces = [ "${lan}" "vm0" ];
