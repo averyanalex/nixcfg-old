@@ -8,11 +8,17 @@
     driSupport = true;
     # driSupport32Bit = true;
     extraPackages = with pkgs; [
-      rocm-opencl-icd
-      rocm-opencl-runtime
+      unstable.rocm-opencl-icd
+      unstable.rocm-opencl-runtime
+      unstable.rocm-runtime
 
       amdvlk
       # driversi686Linux.amdvlk
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    unstable.rocm-smi
+    unstable.rocminfo
+  ];
 }

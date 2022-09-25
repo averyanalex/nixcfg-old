@@ -8,6 +8,10 @@
   ];
 
   isDesktop = true;
+  services.syncthing.enable = true;
+
+  virtualisation.docker.enable = true;
+  environment.systemPackages = [ pkgs.docker-compose_2 ];
 
   home-manager.users.alex = {
     wayland.windowManager.sway.config.output.DP-1.mode = "3440x1440@144Hz";
