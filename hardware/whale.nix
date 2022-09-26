@@ -17,7 +17,10 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [
+    "dm-snapshot"
+    "dm-cache"
+  ];
   services.lvm.boot.thin.enable = true;
 
   # Intel
