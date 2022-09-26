@@ -8,5 +8,7 @@
     smartmontools
     ncdu
     micro
+    unzip
+    unrar
   ];
 }

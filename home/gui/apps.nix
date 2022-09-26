@@ -5,5 +5,9 @@
     virt-manager
     unstable.tdesktop
     unstable.element-desktop
+
+    polymc
+
+    freecad
   ];
 }
