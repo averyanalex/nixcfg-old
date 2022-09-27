@@ -7,6 +7,7 @@
 
     ./common.nix
     ./schedulers.nix
+    ./network.nix
     ./users.nix
     ./home.nix
     ./desktop.nix
