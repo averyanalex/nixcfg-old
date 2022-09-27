@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ lib, pkgs, config, ... }:
 
 let
   wan = "enp6s0";
@@ -12,10 +12,22 @@ in
     ../mounts/whale.nix
   ];
 
+  # LibVirt
   virtualisation.libvirtd.enable = true;
   users.users.alex.extraGroups = [ "libvirtd" ];
-  virtualisation.libvirtd.allowedBridges = [ ];
+  virtualisation.libvirtd.allowedBridges = lib.mkForce [ ];
 
+  # RAM
+  hardware.ksm.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryPercent = 25;
+  };
+
+  # Monitoring
+  services.prometheus.exporters.node.enabledCollectors = [ "zoneinfo" ];
+
+  # Networking
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;
     "net.ipv4.conf.default.forwarding" = true;
@@ -26,8 +38,6 @@ in
     "net.ipv6.conf.all.forwarding" = true;
     "net.ipv6.conf.default.forwarding" = true;
   };
-
-  hardware.ksm.enable = true;
 
   services.dhcpd4 = {
     enable = true;
@@ -49,8 +59,6 @@ in
       }
     '';
   };
-
-  services.prometheus.exporters.node.enabledCollectors = [ "zoneinfo" ];
 
   networking = {
     hostName = "whale";
