@@ -6,6 +6,7 @@
     home-manager.nixosModule
 
     ./common.nix
+    ./schedulers.nix
     ./users.nix
     ./home.nix
     ./desktop.nix
