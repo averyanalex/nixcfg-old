@@ -20,6 +20,7 @@
   boot.initrd.kernelModules = [
     "dm-snapshot"
     "dm-cache"
+    "dm-mirror"
   ];
   services.lvm.boot.thin.enable = true;
 
