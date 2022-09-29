@@ -11,7 +11,7 @@
   networking = {
     hostName = "seal";
 
-    # nebula-averyan.enable = true;
+    nebula-averyan.enable = true;
     # nebula-frsqr.enable = true;
 
     defaultGateway = {
