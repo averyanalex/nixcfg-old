@@ -11,6 +11,7 @@
     enable = true;
     exports = ''
       /tank 10.5.3.101(rw,sync,wdelay,no_root_squash)
+      /tank 10.5.3.100(rw,sync,wdelay,no_root_squash)
     '';
   };
 
@@ -18,8 +19,8 @@
     hostName = "seal";
 
     firewall.interfaces."nebula.averyan" = {
-      allowedTCPPorts = [ 111 2049 ];
-      allowedUDPPorts = [ 111 2049 ];
+      allowedTCPPorts = [ 2049 ];
+      allowedUDPPorts = [ 2049 ];
     };
 
     nebula-averyan.enable = true;

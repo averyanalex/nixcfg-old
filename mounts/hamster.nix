@@ -9,4 +9,10 @@
     device = "/dev/disk/by-uuid/9C88-9063";
     fsType = "vfat";
   };
+
+  fileSystems."/tank" = {
+    device = "10.5.3.30:/tank";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
 }
