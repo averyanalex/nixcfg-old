@@ -13,5 +13,6 @@
   fileSystems."/tank" = {
     device = "10.5.3.30:/tank";
     fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
   };
 }
