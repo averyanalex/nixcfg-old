@@ -52,6 +52,13 @@
             ./machines/whale.nix
           ];
         };
+        seal = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = attrs;
+          modules = [
+            ./machines/seal.nix
+          ];
+        };
       };
     } // flake-utils.lib.eachSystem (with flake-utils.lib.system; [ x86_64-linux i686-linux aarch64-linux ])
       (system:
