@@ -11,7 +11,8 @@ let
   desktops = [ alligator hamster ];
 
   whale = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtyxNV8IPSMHudJrMbemcK82LosU9tdNDV2rhf0Z9ps";
-  servers = [ whale ];
+  seal = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDZex80XRSmrxM3iz1s55cVJGiSes7MZaESxurjscoW8";
+  servers = [ whale seal ];
 
   systems = proxies ++ desktops ++ servers;
 in
