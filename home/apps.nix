@@ -9,6 +9,8 @@
     ncdu
     micro
     unzip
-    unrar
+    rmlint
+    screen
+    tmux
   ];
 }
