@@ -18,6 +18,19 @@
     wayland.windowManager.sway.config.output.DP-1.mode = "3440x1440@144Hz";
   };
 
+  services.yggdrasil = {
+    enable = true;
+    persistentKeys = true;
+    config = {
+      Peers = [
+        "tls://eagle.frsqr.xyz:8362"
+      ];
+      IfName = "ygg0";
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 25565 ];
+
   networking = {
     hostName = "alligator";
 
