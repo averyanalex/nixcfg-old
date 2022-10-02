@@ -7,6 +7,26 @@
     ../mounts/alligator.nix
   ];
 
+  persist = {
+    enable = true;
+    state = {
+      directories = [
+        "/var/log"
+        "/var/lib"
+        "/home"
+        "/etc/ssh"
+      ];
+      etcFiles = [
+        "machine-id"
+      ];
+    };
+  };
+
+  fileSystems."/etc/ssh" = {
+    depends = [ "/persist" ];
+    neededForBoot = true;
+  };
+
   isDesktop = true;
   services.syncthing.enable = true;
 

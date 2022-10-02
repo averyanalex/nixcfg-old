@@ -1,5 +1,5 @@
 {
-  fileSystems."/" = {
+  fileSystems."/persist" = {
     device = "/dev/disk/by-uuid/427a2dc1-f576-4e69-a439-5846acd44027";
     fsType = "ext4";
     options = [ "discard" ];
@@ -10,9 +10,9 @@
     fsType = "vfat";
   };
 
-  fileSystems."/tank" = {
-    device = "10.5.3.30:/tank";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
-  };
+  # fileSystems."/tank" = {
+  #   device = "10.5.3.30:/tank";
+  #   fsType = "nfs";
+  #   options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  # };
 }

@@ -1,4 +1,4 @@
-{ lib, config, home-manager, hyprland, isDesktop, ... }:
+{ lib, config, home-manager, hyprland, ... }:
 
 {
   home-manager.useGlobalPkgs = true;

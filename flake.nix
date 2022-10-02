@@ -22,10 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    impermanence.url = "github:nix-community/impermanence";
+
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, hyprland, nur }@attrs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, hyprland, impermanence, nur }@attrs:
     {
       nixosModules = {
         home-headless = import ./home;

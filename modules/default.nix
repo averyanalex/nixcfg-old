@@ -18,6 +18,7 @@
     ./syncthing.nix
     ./unfree.nix
     ./monitoring.nix
+    ./persist.nix
 
     ./nebula-averyan.nix
     ./nebula-frsqr.nix
