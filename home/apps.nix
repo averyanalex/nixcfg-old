@@ -12,5 +12,6 @@
     rmlint
     screen
     tmux
+    neofetch
   ];
 }

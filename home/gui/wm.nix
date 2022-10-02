@@ -11,6 +11,7 @@
 
     # icons
     gnome3.adwaita-icon-theme
+    libsForQt5.breeze-icons
 
     # keyring
     gnome.seahorse
@@ -20,20 +21,13 @@
     # fonts
     dejavu_fonts
     freefont_ttf
-    gyre-fonts # TrueType substitutes for standard PostScript fonts
+    gyre-fonts
     liberation_ttf
     unifont
     noto-fonts-emoji
     noto-fonts-cjk
     meslo-lgs-nf
-    # (nerdfonts.override { fonts = [ "Meslo" ]; })
-
-    # file manager
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    xfce.tumbler # previews
+    jetbrains-mono
 
     # volume control
     pulseaudio

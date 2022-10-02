@@ -9,8 +9,11 @@
       ublock-origin
       canvasblocker
       i-dont-care-about-cookies
+      cookies-txt
       ipfs-companion
       bitwarden
+      copy-selection-as-markdown
+      temporary-containers
     ];
     profiles = {
       default = {
