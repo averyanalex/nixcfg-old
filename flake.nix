@@ -27,42 +27,53 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, agenix, home-manager, hyprland, impermanence, nur }@attrs:
+  outputs = { self, nixpkgs, flake-utils, agenix, ... }@inputs:
+    let
+      findModules = dir:
+        builtins.concatLists (builtins.attrValues (builtins.mapAttrs
+          (name: type:
+            if type == "regular" then [{
+              name = builtins.elemAt (builtins.match "(.*)\\.nix" name) 0;
+              value = dir + "/${name}";
+            }] else if (builtins.readDir (dir + "/${name}"))
+              ? "default.nix" then [{
+              inherit name;
+              value = dir + "/${name}";
+            }] else
+              findModules (dir + "/${name}"))
+          (builtins.readDir dir)));
+
+      # pkgsFor = system:
+      #   import inputs.nixpkgs {
+      #     localSystem = { inherit system; };
+      #   };
+    in
     {
-      nixosModules = {
-        home-headless = import ./home;
-      };
-      nixosConfigurations = {
-        alligator = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = attrs;
-          modules = [
-            ./machines/alligator.nix
-          ];
-        };
-        hamster = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = attrs;
-          modules = [
-            ./machines/hamster.nix
-          ];
-        };
-        whale = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = attrs;
-          modules = [
-            ./machines/whale.nix
-          ];
-        };
-        seal = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = attrs;
-          modules = [
-            ./machines/seal.nix
-          ];
-        };
-      };
-    } // flake-utils.lib.eachSystem (with flake-utils.lib.system; [ x86_64-linux i686-linux aarch64-linux ])
+      nixosModules = builtins.listToAttrs (findModules ./modules);
+      nixosProfiles = builtins.listToAttrs (findModules ./profiles);
+      nixosRoles = import ./roles;
+
+      nixosConfigurations = with nixpkgs.lib;
+        let
+          hosts = builtins.attrNames (builtins.readDir ./machines);
+
+          mkHost = name:
+            let
+              system = builtins.readFile (./machines + "/${name}/system.txt");
+              # pkgs = pkgsFor system;
+            in
+            nixosSystem {
+              inherit system;
+              modules = [
+                (import (./machines + "/${name}"))
+                # { nixpkgs.pkgs = pkgs; }
+                { networking.hostName = name; }
+              ];
+              specialArgs = { inherit inputs; };
+            };
+        in
+        genAttrs hosts mkHost;
+    } // flake-utils.lib.eachSystem (with flake-utils.lib.system; [ x86_64-linux aarch64-linux ])
       (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};

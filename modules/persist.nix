@@ -1,4 +1,4 @@
-{ lib, config, impermanence, ... }:
+{ lib, config, inputs, ... }:
 
 let
   inherit (builtins) concatMap;
@@ -15,10 +15,6 @@ let
   allDirectories = takeAll "directories" persists;
 in
 {
-  imports = [
-    impermanence.nixosModules.impermanence
-  ];
-
   options =
     let
       inherit (lib) mkOption mkEnableOption;
@@ -54,6 +50,10 @@ in
         cache = common;
       };
     };
+
+  imports = [
+    inputs.impermanence.nixosModules.impermanence
+  ];
 
   config = mkIf cfg.enable {
     environment.persistence.${cfg.persistRoot} = {
