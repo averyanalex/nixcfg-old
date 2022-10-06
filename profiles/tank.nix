@@ -1,5 +1,7 @@
 {
   boot.supportedFilesystems = [ "nfs" ];
+  systemd.services.rpcbind.wants = [ "systemd-tmpfiles-setup.service" ];
+  systemd.services.rpcbind.after = [ "systemd-tmpfiles-setup.service" ];
 
   systemd.mounts = [{
     type = "nfs";
