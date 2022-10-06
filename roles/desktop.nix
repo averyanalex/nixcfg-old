@@ -7,5 +7,7 @@
     vscode
 
     sway
+
+    tank
   ]);
 }

@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home-manager.users.alex ={
+  home-manager.users.alex = {
     home.packages = with pkgs; [
       rnix-lsp
     ];
@@ -85,4 +85,6 @@
       };
     };
   };
+
+  persist.state.homeDirs = [ ".config/VSCodium" ];
 }

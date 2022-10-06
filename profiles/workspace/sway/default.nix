@@ -1,33 +1,12 @@
 { lib, pkgs, config, ... }:
 
-let
-  fancylock = pkgs.writeShellScript "fancylock" ''
-    swaylock \
-      --screenshots \
-      --clock \
-      --indicator \
-      --indicator-radius 100 \
-      --indicator-thickness 7 \
-      --effect-blur 9x15 \
-      --effect-vignette 0.5:0.5 \
-      --ring-color bb00cc \
-      --key-hl-color 880033 \
-      --line-color 00000000 \
-      --inside-color 00000088 \
-      --separator-color 00000000 \
-      --fade-in 1.5 \
-      "$@"
-  '';
-  idlehandler = pkgs.writeShellScript "idlehandler" ''
-    swayidle -w timeout 300 '${fancylock} --grace 60'
-  '';
-in
 {
   imports = [
+    ./swaylock.nix
     ./wm.nix
   ];
 
-  home-manager.users.alex ={
+  home-manager.users.alex = {
     home.packages = with pkgs; [
       swayidle
       swaylock-effects
@@ -113,7 +92,6 @@ in
         for_window [shell="x_wayland"] title_format "%class - %title"
 
         exec waybar
-        exec ${idlehandler}
 
         # AUTOSTART
         # exec telegram-desktop -startintray

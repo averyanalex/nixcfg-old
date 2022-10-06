@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home-manager.users.alex ={
+  home-manager.users.alex = {
     programs.firefox = {
       enable = true;
       # package = pkgs.firefox-wayland;
@@ -403,4 +403,6 @@
       };
     };
   };
+
+  persist.state.homeDirs = [ ".mozilla" ];
 }

@@ -11,5 +11,6 @@
     kernel.sysctl."vm.swappiness" = 0;
     kernel.sysctl."kernel/sysrq" = 1;
   };
-  persist.state.etcFiles = [ "machine-id" ];
+
+  persist.state.files = [ "/etc/machine-id" ];
 }

@@ -9,10 +9,4 @@
     device = "/dev/disk/by-uuid/FBC5-F521";
     fsType = "vfat";
   };
-
-  # fileSystems."/tank" = {
-  #   device = "10.5.3.30:/tank";
-  #   fsType = "nfs";
-  #   options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
-  # };
 }

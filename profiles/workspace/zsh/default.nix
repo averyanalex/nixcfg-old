@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home-manager.users.alex ={
+  home-manager.users.alex = {
     # Autostart zsh in interactive non-tty sessions
     programs.bash.enable = true;
     programs.bash.initExtra = ''
@@ -12,12 +12,6 @@
 
     # Beautiful cat
     programs.bat.enable = true;
-
-    # Smart cd
-    programs.zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     # Fuzzy search
     programs.fzf = {
@@ -30,15 +24,17 @@
       enable = true;
     };
 
-    programs.direnv = {
-      enable = true;
-      enableZshIntegration = true;
-
-      nix-direnv.enable = true;
-    };
-
     programs.zsh = {
       enable = true;
+
+      history = {
+        size = 30000;
+        save = 30000;
+        extended = true;
+        path = "/home/alex/.local/state/zsh/history";
+      };
+
+      dotDir = ".config/zsh";
 
       enableAutosuggestions = true;
       enableCompletion = true;
@@ -51,8 +47,6 @@
         lt = "${pkgs.exa}/bin/exa --icons --tree";
 
         ip = "ip --color=auto";
-
-        cd = "z";
 
         # nixupd = ''sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
         tnixupd = "sudo nixos-rebuild switch --flake .";
@@ -81,4 +75,6 @@
       ];
     };
   };
+
+  persist.state.homeDirs = [ ".local/state/zsh" ];
 }

@@ -10,7 +10,7 @@
   environment.systemPackages = [ pkgs.mosh ];
   networking.firewall.allowedUDPPortRanges = [{ from = 60000; to = 61000; }];
 
-  persist.state.directories = [ "/etc/ssh" ];
+  persist.state.dirs = [ "/etc/ssh" ];
 
   # hack for agenix
   fileSystems."/etc/ssh" = {

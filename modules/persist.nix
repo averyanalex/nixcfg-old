@@ -6,13 +6,14 @@ let
 
   cfg = config.persist;
 
-  takeAll = what: concatMap (x: x.${what});
   persists = with cfg; [ state derivative cache ];
-  # absoluteHomeFiles = map (x: "${cfg.homeDir}/${x}");
-  # allHomeFiles = takeAll "homeFiles" persists;
-  absoluteEtcFiles = map (x: "/etc/${x}");
-  allEtcFiles = absoluteEtcFiles (takeAll "etcFiles" persists);
-  allDirectories = takeAll "directories" persists;
+  takeAll = what: concatMap (x: x.${what});
+
+  allHomeFiles = takeAll "homeFiles" persists;
+  allHomeDirs = takeAll "homeDirs" persists;
+
+  allSystemFiles = takeAll "files" persists;
+  allSystemDirs = takeAll "dirs" persists;
 in
 {
   options =
@@ -21,11 +22,15 @@ in
       inherit (lib.types) listOf path str;
 
       common = {
-        directories = mkOption {
+        dirs = mkOption {
           type = listOf path;
           default = [ ];
         };
-        etcFiles = mkOption {
+        files = mkOption {
+          type = listOf str;
+          default = [ ];
+        };
+        homeDirs = mkOption {
           type = listOf str;
           default = [ ];
         };
@@ -45,6 +50,11 @@ in
           default = "/persist";
         };
 
+        username = mkOption {
+          type = str;
+          default = "user";
+        };
+
         state = common;
         derivative = common;
         cache = common;
@@ -57,8 +67,13 @@ in
 
   config = mkIf cfg.enable {
     environment.persistence.${cfg.persistRoot} = {
-      directories = allDirectories;
-      files = allEtcFiles;
+      directories = allSystemDirs;
+      files = allSystemFiles;
+
+      users."${cfg.username}" = {
+        directories = allHomeDirs;
+        files = allHomeFiles;
+      };
     };
 
     fileSystems."/" = {
