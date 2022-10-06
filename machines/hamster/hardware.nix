@@ -1,11 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ modulesPath, ... }:
 
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./physical.nix
-    ./intelgpu.nix
-    ./sdboot.nix
+    ../../hardware/physical.nix
+    ../../hardware/intelgpu.nix
+    ../../hardware/sdboot.nix
   ];
 
   # Storage
