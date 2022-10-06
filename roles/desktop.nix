@@ -8,6 +8,8 @@
 
     sway
 
+    flatpak
+    pipewire
     tank
   ]);
 }
