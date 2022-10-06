@@ -1,4 +1,7 @@
 {
   networking.networkmanager.enable = true;
-  persist.state.dirs = [ "/var/lib/NetworkManager" ];
+  persist.state.dirs = [
+    "/etc/NetworkManager"
+    "/var/lib/NetworkManager"
+  ];
 }
