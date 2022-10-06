@@ -76,5 +76,6 @@
     };
   };
 
+  environment.pathsToLink = [ "/share/zsh" ];
   persist.state.homeDirs = [ ".local/state/zsh" ];
 }
