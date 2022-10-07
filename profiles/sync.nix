@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 let
-  allDevices = [ "hamster" "pocoft" ];
+  allDevices = [ "hamster" "alligator" "pocoft" ];
   commonFolder = name: {
     label = name;
     id = lib.strings.toLower name;
@@ -23,13 +23,13 @@ in
     openDefaultPorts = true;
 
     devices = {
-      # alligator = {
-      #   addresses = [
-      #     "tcp://192.168.3.60:22000"
-      #     "tcp://10.5.3.101:22000"
-      #   ];
-      #   id = "RZP5BDL-HVPSCK7-OETCWX7-DLBF33F-D2TFH7K-3JFC6IK-PNJQQGO-2PN44QA";
-      # };
+      alligator = {
+        addresses = [
+          "tcp://192.168.3.60:22000"
+          "tcp://10.5.3.101:22000"
+        ];
+        id = "XYYXB6U-Y24PGXJ-UEDYSHQ-HKYELXG-UF6I4S4-EKB3GB3-KU6DEUH-5JDCOAN";
+      };
       hamster = {
         addresses = [
           "tcp://10.5.3.100:22000"

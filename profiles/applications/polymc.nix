@@ -9,7 +9,7 @@
     id = "polymc";
     path = "/home/alex/.local/share/PolyMC";
     ignorePerms = false;
-    devices = [ "hamster" ];
+    devices = [ "hamster" "alligator" ];
   };
 
   persist.state.homeDirs = [ ".local/share/PolyMC" ];
