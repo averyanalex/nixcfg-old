@@ -22,6 +22,11 @@
     #   inputs.nixpkgs.follows = "nixpkgs-unstable";
     # };
 
+    polymc = {
+      url = "github:PolyMC/PolyMC";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
 
     nur.url = "github:nix-community/NUR";

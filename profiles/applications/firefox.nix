@@ -55,17 +55,17 @@
 
             # Cleanup
             "privacy.clearOnShutdown.offlineApps" = true;
-            "privacy.sanitize.sanitizeOnShutdown" = true;
-            "privacy.sanitize.timeSpan" = 0;
+            # "privacy.sanitize.sanitizeOnShutdown" = true;
+            # "privacy.sanitize.timeSpan" = 0;
 
             # Cache and storage
-            "browser.cache.disk.enable" = true; # lw: false. disable disk cache
+            # "browser.cache.disk.enable" = true; # lw: false. disable disk cache
             # prevent media cache from being written to disk in pb, but increase max cache size to avoid playback issues
             "browser.privatebrowsing.forceMediaMemoryCache" = true;
             "media.memory_cache_max_size" = 65536;
             # lw: disable favicons in profile folder and page thumbnail capturing
-            "browser.shell.shortcutFavicons" = true; # lw: false
-            "browser.pagethumbnails.capturing_disabled" = false; # lw: true
+            # "browser.shell.shortcutFavicons" = true; # lw: false
+            # "browser.pagethumbnails.capturing_disabled" = false; # lw: true
             "browser.helperApps.deleteTempFileOnExit" = true; # delete temporary files opened with external apps
 
             # /** [SECTION] HISTORY AND SESSION RESTORE
@@ -121,20 +121,20 @@
             "network.manage-offline-status" = false;
 
             # RFP
-            "privacy.resistFingerprinting" = true;
+            # "privacy.resistFingerprinting" = true;
             # rfp related settings
-            "privacy.resistFingerprinting.block_mozAddonManager" = true; # prevents rfp from breaking AMO
-            "browser.startup.blankWindow" = false; # if set to true it breaks RFP windows resizing
-            "browser.display.use_system_colors" = false; # default but enforced due to RFP
+            # "privacy.resistFingerprinting.block_mozAddonManager" = true; # prevents rfp from breaking AMO
+            # "browser.startup.blankWindow" = false; # if set to true it breaks RFP windows resizing
+            # "browser.display.use_system_colors" = false; # default but enforced due to RFP
             # increase the size of new RFP windows for better usability, while still using a rounded value.
             # if the screen resolution is lower it will stretch to the biggest possible rounded value.
             # also, expose hidden letterboxing pref but do not enable it for now.
-            "privacy.window.maxInnerWidth" = 1600;
-            "privacy.window.maxInnerHeight" = 900;
-            "privacy.resistFingerprinting.letterboxing" = false;
+            # "privacy.window.maxInnerWidth" = 1600;
+            # "privacy.window.maxInnerHeight" = 900;
+            # "privacy.resistFingerprinting.letterboxing" = false;
 
             # WebGL
-            "webgl.disabled" = false; # lw: true
+            # "webgl.disabled" = false; # lw: true
 
             # Certificates
             "security.cert_pinning.enforcement_level" = 2; # enable strict public key pinning, might cause issues with AVs
@@ -142,7 +142,7 @@
             "security.ssl.require_safe_negotiation" = true;
             "security.ssl.treat_unsafe_negotiation_as_broken" = true;
             "security.remote_settings.crlite_filters.enabled" = true;
-            "security.OCSP.require" = false;
+            # "security.OCSP.require" = true;
 
             # TLS/SSL
             "security.tls.enable_0rtt_data" = false; # disable 0 RTT to improve tls 1.3 security
@@ -203,10 +203,10 @@
 
             # Search and urlbar
             # lw: disable search suggestion and do not update opensearch engines
-            "browser.urlbar.suggest.searches" = true; # lw: false
-            "browser.search.suggest.enabled" = true; # lw: false
-            "browser.search.update" = true; # lw: false
-            "browser.urlbar.quicksuggest.enabled" = true; # lw: false
+            # "browser.urlbar.suggest.searches" = true; # lw: false
+            # "browser.search.suggest.enabled" = true; # lw: false
+            # "browser.search.update" = true; # lw: false
+            # "browser.urlbar.quicksuggest.enabled" = true; # lw: false
             "browser.urlbar.quicksuggest.dataCollection.enabled" = false; # custom
             "browser.urlbar.quicksuggest.onboardingDialogChoice" = "reject_2"; # custom
             "browser.urlbar.quicksuggest.shouldShowOnboardingDialog" = false; # custom
@@ -215,7 +215,7 @@
             # user interaction should always be required for downloads, as a way to enhance security by asking the user to specific a certain save location
             "browser.download.useDownloadDir" = false;
             "browser.download.autohideButton" = false; # do not hide download button automatically
-            "browser.download.manager.addToRecentDocs" = true; # lw: false. do not add downloads to recents
+            # "browser.download.manager.addToRecentDocs" = true; # lw: false. do not add downloads to recents
             "browser.download.alwaysOpenPanel" = false; # do not expand toolbar menu for every download, we already have enough interaction
 
             # Autoplay
@@ -224,8 +224,8 @@
             "media.autoplay.default" = 5;
 
             # Pop-ups and windows
-            "dom.disable_beforeunload" = false; # lw: true. disable "confirm you want to leave" pop-ups
-            "dom.disable_open_during_load" = false; # lw: true. block pop-ups windows
+            # "dom.disable_beforeunload" = false; # lw: true. disable "confirm you want to leave" pop-ups
+            # "dom.disable_open_during_load" = false; # lw: true. block pop-ups windows
             # lw: "dom.popup_allowed_events" = "click dblclick mousedown pointerdown";
             # prevent scripts from resizing existing windows and opening new ones, by forcing them into new tabs that can't be resized as well
             "dom.disable_window_move_resize" = true;
@@ -288,10 +288,10 @@
             "services.settings.server" = "https://%.invalid"; # set the remote settings URL (REMOTE_SETTINGS_SERVER_URL in the code)
 
             # Branding
-            "app.support.baseURL" = "https://librewolf.net/docs/faq/#";
-            "browser.search.searchEnginesURL" = "https://librewolf.net/docs/faq/#how-do-i-add-a-search-engine";
-            "browser.geolocation.warning.infoURL" = "https://librewolf.net/docs/faq/#how-do-i-enable-location-aware-browsing";
-            "app.feedback.baseURL" = "https://librewolf.net/#questions";
+            # "app.support.baseURL" = "https://librewolf.net/docs/faq/#";
+            # "browser.search.searchEnginesURL" = "https://librewolf.net/docs/faq/#how-do-i-add-a-search-engine";
+            # "browser.geolocation.warning.infoURL" = "https://librewolf.net/docs/faq/#how-do-i-enable-location-aware-browsing";
+            # "app.feedback.baseURL" = "https://librewolf.net/#questions";
             # defaultPref("app.releaseNotesURL", "https://gitlab.com/librewolf-community/browser");
             # defaultPref("app.releaseNotesURL.aboutDialog", "https://gitlab.com/librewolf-community/browser");
             # defaultPref("app.update.url.details", "https://gitlab.com/librewolf-community/browser");
@@ -300,7 +300,7 @@
             # First launch
             "browser.startup.homepage_override.mstone" = "ignore";
             "startup.homepage_override_url" = "about:blank";
-            "browser.startup.homepage" = "https://search.nixos.org"; # custom
+            # "browser.startup.homepage" = "https://search.nixos.org"; # custom
             "startup.homepage_welcome_url" = "about:blank";
             "startup.homepage_welcome_url.additional" = "";
             "browser.messaging-system.whatsNewPanel.enabled" = false;
