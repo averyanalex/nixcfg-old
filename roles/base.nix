@@ -26,5 +26,6 @@
     user
     userdirs
     xdg
+    yggdrasil
   ]);
 }

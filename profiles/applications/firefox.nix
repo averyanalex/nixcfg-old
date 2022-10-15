@@ -61,8 +61,8 @@
             # Cache and storage
             # "browser.cache.disk.enable" = true; # lw: false. disable disk cache
             # prevent media cache from being written to disk in pb, but increase max cache size to avoid playback issues
-            "browser.privatebrowsing.forceMediaMemoryCache" = true;
-            "media.memory_cache_max_size" = 65536;
+            # "browser.privatebrowsing.forceMediaMemoryCache" = true;
+            # "media.memory_cache_max_size" = 65536;
             # lw: disable favicons in profile folder and page thumbnail capturing
             # "browser.shell.shortcutFavicons" = true; # lw: false
             # "browser.pagethumbnails.capturing_disabled" = false; # lw: true
@@ -78,23 +78,23 @@
 
             # History and session restore
             "browser.formfill.enable" = false; # disable form history
-            "browser.sessionstore.interval" = 60000; # increase time between session saves
+            # "browser.sessionstore.interval" = 60000; # increase time between session saves
 
             # Query stripping
-            "privacy.query_stripping.strip_list" = "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid";
+            # "privacy.query_stripping.strip_list" = "__hsfp __hssc __hstc __s _hsenc _openstat dclid fbclid gbraid gclid hsCtaTracking igshid mc_eid ml_subscriber ml_subscriber_hash msclkid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id rb_clickid s_cid twclid vero_conv vero_id wbraid wickedid yclid";
 
-            # HTTPS
-            "dom.security.https_only_mode" = true; # only allow https in all windows, including private browsing
-            "network.auth.subresource-http-auth-allow" = 1; # block HTTP authentication credential dialogs
-            "security.mixed_content.block_display_content" = true; # block insecure passive content
+            # # HTTPS
+            # "dom.security.https_only_mode" = true; # only allow https in all windows, including private browsing
+            # "network.auth.subresource-http-auth-allow" = 1; # block HTTP authentication credential dialogs
+            # "security.mixed_content.block_display_content" = true; # block insecure passive content
 
-            # Referers
-            "network.http.referer.XOriginPolicy" = 0; # default, might be worth changing to 2 to stop sending them completely
-            "network.http.referer.XOriginTrimmingPolicy" = 2; # trim referer to only send scheme, host and port
+            # # Referers
+            # "network.http.referer.XOriginPolicy" = 0; # default, might be worth changing to 2 to stop sending them completely
+            # "network.http.referer.XOriginTrimmingPolicy" = 2; # trim referer to only send scheme, host and port
 
-            # WebRTC
-            "media.peerconnection.ice.no_host" = true; # don't use any private IPs for ICE 
-            "media.peerconnection.ice.default_address_only" = true; # use a single interface for ICE candidates, the vpn one when a vpn is used
+            # # WebRTC
+            # "media.peerconnection.ice.no_host" = true; # don't use any private IPs for ICE 
+            # "media.peerconnection.ice.default_address_only" = true; # use a single interface for ICE candidates, the vpn one when a vpn is used
 
             # Proxy
             "network.gio.supported-protocols" = ""; # disable gio as it could bypass proxy
@@ -102,23 +102,23 @@
             "network.proxy.socks_remote_dns" = true; # forces dns query through the proxy when using one
             "media.peerconnection.ice.proxy_only_if_behind_proxy" = true; # force webrtc inside proxy when one is used
 
-            # DNS
-            "network.trr.confirmationNS" = "skip"; # skip undesired doh test connection
-            "network.dns.disablePrefetch" = true; # disable dns prefetching
+            # # DNS
+            # "network.trr.confirmationNS" = "skip"; # skip undesired doh test connection
+            # "network.dns.disablePrefetch" = true; # disable dns prefetching
 
-            # Prefetching and speculative connections
-            "network.predictor.enabled" = false;
-            "network.prefetch-next" = false;
-            "network.http.speculative-parallel-limit" = 0;
-            "browser.places.speculativeConnect.enabled" = false;
-            # disable speculative connections and domain guessing from the urlbar
-            "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0; # default v104+
-            "browser.urlbar.speculativeConnect.enabled" = false;
-            # "browser.fixup.alternate.enabled" = false; # default v104+
+            # # Prefetching and speculative connections
+            # "network.predictor.enabled" = false;
+            # "network.prefetch-next" = false;
+            # "network.http.speculative-parallel-limit" = 0;
+            # "browser.places.speculativeConnect.enabled" = false;
+            # # disable speculative connections and domain guessing from the urlbar
+            # "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0; # default v104+
+            # "browser.urlbar.speculativeConnect.enabled" = false;
+            # # "browser.fixup.alternate.enabled" = false; # default v104+
 
             # Offline
             # let users set the browser as offline, without the browser trying to guess
-            "network.manage-offline-status" = false;
+            # "network.manage-offline-status" = false;
 
             # RFP
             # "privacy.resistFingerprinting" = true;
@@ -136,27 +136,27 @@
             # WebGL
             # "webgl.disabled" = false; # lw: true
 
-            # Certificates
-            "security.cert_pinning.enforcement_level" = 2; # enable strict public key pinning, might cause issues with AVs
-            # enable safe negotiation and show warning when it is not supported. might cause breakage.
-            "security.ssl.require_safe_negotiation" = true;
-            "security.ssl.treat_unsafe_negotiation_as_broken" = true;
-            "security.remote_settings.crlite_filters.enabled" = true;
-            # "security.OCSP.require" = true;
+            # # Certificates
+            # "security.cert_pinning.enforcement_level" = 2; # enable strict public key pinning, might cause issues with AVs
+            # # enable safe negotiation and show warning when it is not supported. might cause breakage.
+            # "security.ssl.require_safe_negotiation" = true;
+            # "security.ssl.treat_unsafe_negotiation_as_broken" = true;
+            # "security.remote_settings.crlite_filters.enabled" = true;
+            # # "security.OCSP.require" = true;
 
-            # TLS/SSL
-            "security.tls.enable_0rtt_data" = false; # disable 0 RTT to improve tls 1.3 security
-            "security.tls.version.enable-deprecated" = false; # make TLS downgrades session only by enforcing it with pref()
-            # show relevant and advanced issues on warnings and error screens
-            "browser.ssl_override_behavior" = 1;
-            "browser.xul.error_pages.expert_bad_cert" = true;
+            # # TLS/SSL
+            # "security.tls.enable_0rtt_data" = false; # disable 0 RTT to improve tls 1.3 security
+            # "security.tls.version.enable-deprecated" = false; # make TLS downgrades session only by enforcing it with pref()
+            # # show relevant and advanced issues on warnings and error screens
+            # "browser.ssl_override_behavior" = 1;
+            # "browser.xul.error_pages.expert_bad_cert" = true;
 
-            # Permissions
-            "permissions.delegation.enabled" = false; # force permission request to show real origin
-            "permissions.manager.defaultsUrl" = ""; # revoke special permissions for some mozilla domains
+            # # Permissions
+            # "permissions.delegation.enabled" = false; # force permission request to show real origin
+            # "permissions.manager.defaultsUrl" = ""; # revoke special permissions for some mozilla domains
 
             # Fonts
-            "gfx.font_rendering.opentype_svg.enabled" = false; # disale svg opentype fonts
+            # "gfx.font_rendering.opentype_svg.enabled" = false; # disale svg opentype fonts
 
             # Safe browsing
             "browser.safebrowsing.malware.enabled" = false;
@@ -176,7 +176,7 @@
             "browser.safebrowsing.provider.google4.dataSharingURL" = "";
 
             # Others
-            "network.IDN_show_punycode" = true; # use punycode in idn to prevent spoofing
+            # "network.IDN_show_punycode" = true; # use punycode in idn to prevent spoofing
             "pdfjs.enableScripting" = false; # disable js scripting in the built-in pdf reader
 
             # Location
@@ -213,36 +213,36 @@
 
             # Downloads
             # user interaction should always be required for downloads, as a way to enhance security by asking the user to specific a certain save location
-            "browser.download.useDownloadDir" = false;
-            "browser.download.autohideButton" = false; # do not hide download button automatically
+            # "browser.download.useDownloadDir" = false;
+            # "browser.download.autohideButton" = false; # do not hide download button automatically
             # "browser.download.manager.addToRecentDocs" = true; # lw: false. do not add downloads to recents
-            "browser.download.alwaysOpenPanel" = false; # do not expand toolbar menu for every download, we already have enough interaction
+            # "browser.download.alwaysOpenPanel" = false; # do not expand toolbar menu for every download, we already have enough interaction
 
             # Autoplay
             # block autoplay unless element is clicked, and apply the policy to all elements including muted ones
-            "media.autoplay.blocking_policy" = 2;
-            "media.autoplay.default" = 5;
+            # "media.autoplay.blocking_policy" = 2;
+            # "media.autoplay.default" = 5;
 
             # Pop-ups and windows
             # "dom.disable_beforeunload" = false; # lw: true. disable "confirm you want to leave" pop-ups
             # "dom.disable_open_during_load" = false; # lw: true. block pop-ups windows
             # lw: "dom.popup_allowed_events" = "click dblclick mousedown pointerdown";
             # prevent scripts from resizing existing windows and opening new ones, by forcing them into new tabs that can't be resized as well
-            "dom.disable_window_move_resize" = true;
-            "browser.link.open_newwindow" = 3;
-            "browser.link.open_newwindow.restriction" = 0;
+            # "dom.disable_window_move_resize" = true;
+            # "browser.link.open_newwindow" = 3;
+            # "browser.link.open_newwindow.restriction" = 0;
 
             # Mouse
             # lw: "middlemouse.contentLoadURL" = false; # prevent mouse middle click from opening links
 
             # Extensions
-            "extensions.webextensions.restrictedDomains" = "";
-            "extensions.enabledScopes" = 5; # hidden
-            "extensions.postDownloadThirdPartyPrompt" = false;
-            "extensions.systemAddon.update.enabled" = false;
-            "extensions.systemAddon.update.url" = "";
-            "extensions.webcompat-reporter.enabled" = false;
-            "extensions.webcompat-reporter.newIssueEndpoint" = "";
+            # "extensions.webextensions.restrictedDomains" = "";
+            # "extensions.enabledScopes" = 5; # hidden
+            # "extensions.postDownloadThirdPartyPrompt" = false;
+            # "extensions.systemAddon.update.enabled" = false;
+            # "extensions.systemAddon.update.url" = "";
+            # "extensions.webcompat-reporter.enabled" = false;
+            # "extensions.webcompat-reporter.newIssueEndpoint" = "";
 
             # /** [SECTION] EXTENSION FIREWALL
             #  * the firewall can be enabled with the below prefs, but it is not a sane default:
@@ -276,10 +276,10 @@
 
             # Devtools
             # disable chrome and remote debugging
-            "devtools.chrome.enabled" = false;
-            "devtools.debugger.remote-enabled" = false;
-            "devtools.remote.adb.extensionURL" = "";
-            "devtools.selfxss.count" = 0; # required for devtools console to work
+            # "devtools.chrome.enabled" = false;
+            # "devtools.debugger.remote-enabled" = false;
+            # "devtools.remote.adb.extensionURL" = "";
+            # "devtools.selfxss.count" = 0; # required for devtools console to work
 
             # Others
             "browser.translation.engine" = ""; # remove translation engine
