@@ -6,6 +6,8 @@
       unstable.xdg-ninja
       ncdu
       killall
+      btop
+      htop
     ];
   };
 }
