@@ -9,9 +9,9 @@
         decentraleyes
         ublock-origin
         canvasblocker
-        i-dont-care-about-cookies
+        # i-dont-care-about-cookies
         cookies-txt
-        ipfs-companion
+        # ipfs-companion
         bitwarden
         copy-selection-as-markdown
         temporary-containers
@@ -220,8 +220,8 @@
 
             # Autoplay
             # block autoplay unless element is clicked, and apply the policy to all elements including muted ones
-            # "media.autoplay.blocking_policy" = 2;
-            # "media.autoplay.default" = 5;
+            "media.autoplay.blocking_policy" = 2;
+            "media.autoplay.default" = 5;
 
             # Pop-ups and windows
             # "dom.disable_beforeunload" = false; # lw: true. disable "confirm you want to leave" pop-ups
