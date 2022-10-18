@@ -6,6 +6,7 @@
   ]) ++ (with inputs.self.nixosProfiles; [
     firefox
     polymc
+    telegram
     vscode
 
     sway
