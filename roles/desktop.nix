@@ -6,7 +6,7 @@
   ]) ++ (with inputs.self.nixosProfiles; [
     firefox
     freecad
-    polymc
+    minecraft
     telegram
     vscode
 

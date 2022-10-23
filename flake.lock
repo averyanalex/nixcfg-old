@@ -92,13 +92,13 @@
       "locked": {
         "lastModified": 1650031308,
         "narHash": "sha256-TvVOjkUobYJD9itQYueELJX3wmecvEdCbJ0FinW2mL4=",
-        "owner": "PolyMC",
+        "owner": "PrismLauncher",
         "repo": "libnbtplusplus",
         "rev": "2203af7eeb48c45398139b583615134efd8d407f",
         "type": "github"
       },
       "original": {
-        "owner": "PolyMC",
+        "owner": "PrismLauncher",
         "repo": "libnbtplusplus",
         "type": "github"
       }
@@ -150,7 +150,7 @@
         "type": "github"
       }
     },
-    "polymc": {
+    "prismlauncher": {
       "inputs": {
         "flake-compat": "flake-compat",
         "libnbtplusplus": "libnbtplusplus",
@@ -160,16 +160,16 @@
         "tomlplusplus": "tomlplusplus"
       },
       "locked": {
-        "lastModified": 1666088046,
-        "narHash": "sha256-TmYCV+MCh4JN9wUHQdwOnuBMP0kIFZBhupbyVT5yTKk=",
-        "owner": "PolyMC",
-        "repo": "PolyMC",
-        "rev": "ebbc1f67e02e62b8024280232cfb936468afd395",
+        "lastModified": 1666483649,
+        "narHash": "sha256-UTn7jthTOD0uXyWiB3b67WeOQZ6xC4VpIFs1b/Yxg4A=",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "rev": "29e6e170cc73c39d816a4b5e857849aa6329b552",
         "type": "github"
       },
       "original": {
-        "owner": "PolyMC",
-        "repo": "PolyMC",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
         "type": "github"
       }
     },
@@ -182,17 +182,17 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "polymc": "polymc"
+        "prismlauncher": "prismlauncher"
       }
     },
     "tomlplusplus": {
       "flake": false,
       "locked": {
-        "lastModified": 1664034574,
-        "narHash": "sha256-EFMAl6tsTvkgK0DWC/pZfOIq06b2e5SnxJa1ngGRIQA=",
+        "lastModified": 1666091090,
+        "narHash": "sha256-djpMCFPvkJcfynV8WnsYdtwLq+J7jpV1iM4C6TojiyM=",
         "owner": "marzer",
         "repo": "tomlplusplus",
-        "rev": "8aa5c8b2a4ff2c440d4630addf64fa4f62146170",
+        "rev": "1e4a3833d013aee08f58c5b31c69f709afc69f73",
         "type": "github"
       },
       "original": {

@@ -1,13 +1,13 @@
 { inputs, pkgs, ... }:
 
 let
-  polymc = inputs.polymc.packages.x86_64-linux.polymc.overrideAttrs (final: prev: {
+  prismlauncher = inputs.prismlauncher.packages.x86_64-linux.prismlauncher.overrideAttrs (final: prev: {
     buildInputs = prev.buildInputs ++ [ pkgs.unstable.mangohud ];
   });
 in
 {
   home-manager.users.alex = {
-    home.packages = [ polymc ];
+    home.packages = [ prismlauncher ];
   };
 
   services.syncthing.folders."PolyMC" = {

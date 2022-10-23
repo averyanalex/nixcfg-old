@@ -22,8 +22,8 @@
     #   inputs.nixpkgs.follows = "nixpkgs-unstable";
     # };
 
-    polymc = {
-      url = "github:PolyMC/PolyMC";
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
