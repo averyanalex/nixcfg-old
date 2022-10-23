@@ -8,6 +8,7 @@
     freecad
     minecraft
     telegram
+    tex
     vscode
 
     sway
