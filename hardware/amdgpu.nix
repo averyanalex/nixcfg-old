@@ -19,6 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     rocm-smi
+    radeontop
     unstable.rocminfo
   ];
 }
