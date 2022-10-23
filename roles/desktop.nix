@@ -5,6 +5,7 @@
     nebula-frsqr
   ]) ++ (with inputs.self.nixosProfiles; [
     firefox
+    freecad
     polymc
     telegram
     vscode
