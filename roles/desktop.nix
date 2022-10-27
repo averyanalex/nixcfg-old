@@ -4,9 +4,11 @@
   ] ++ (with inputs.self.nixosModules; [
     nebula-frsqr
   ]) ++ (with inputs.self.nixosProfiles; [
+    cura
     firefox
     freecad
     minecraft
+    openscad
     telegram
     tex
     vscode
