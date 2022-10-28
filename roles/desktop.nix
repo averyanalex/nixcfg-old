@@ -3,6 +3,7 @@
     ./base.nix
   ] ++ (with inputs.self.nixosModules; [
     nebula-frsqr
+    waydroid
   ]) ++ (with inputs.self.nixosProfiles; [
     cura
     firefox
@@ -23,5 +24,6 @@
     pipewire
     sync
     tank
+    waydroid
   ]);
 }
