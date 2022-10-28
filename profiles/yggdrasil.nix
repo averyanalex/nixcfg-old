@@ -1,6 +1,8 @@
+{ pkgs, ... }:
 {
   services.yggdrasil = {
     enable = true;
+    package = pkgs.unstable.yggdrasil;
     persistentKeys = true;
     config = {
       Peers = [

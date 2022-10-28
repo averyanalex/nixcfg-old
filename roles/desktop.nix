@@ -7,6 +7,7 @@
     cura
     firefox
     freecad
+    open
     minecraft
     openscad
     telegram
@@ -17,6 +18,7 @@
 
     autologin
     flatpak
+    music
     nebula-frsqr
     pipewire
     sync
