@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home-manager.users.alex ={
+  home-manager.users.alex = {
     home.packages = with pkgs; [
       # screenshots
       grim
