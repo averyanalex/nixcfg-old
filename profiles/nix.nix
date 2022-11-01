@@ -11,14 +11,14 @@
 
       experimental-features = "nix-command flakes";
     };
-  };
 
-  gc = {
-    automatic = true;
-    dates = "04:15";
-  };
+    gc = {
+      automatic = true;
+      dates = "04:15";
+    };
 
-  daemonIOSchedClass = "best-effort";
-  daemonIOSchedPriority = 5;
-  daemonCPUSchedPolicy = "batch";
+    daemonIOSchedClass = "best-effort";
+    daemonIOSchedPriority = 5;
+    daemonCPUSchedPolicy = "batch";
+  };
 }

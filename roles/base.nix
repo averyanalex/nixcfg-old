@@ -24,6 +24,7 @@
       nur
       persist
       ssh-server
+      sudo
       unstable
       userdirs
       users

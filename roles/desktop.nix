@@ -28,5 +28,6 @@
       sync
       tank
       waydroid
+      xanmod
     ]);
 }
