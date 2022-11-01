@@ -17,11 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
-
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -45,18 +40,17 @@
               inherit name;
               value = dir + "/${name}";
             }] else
-              findModules (dir + "/${name}"))
+              [{
+                inherit name;
+                value = builtins.listToAttrs (findModules (dir + "/${name}"));
+              }])
           (builtins.readDir dir)));
 
-      # pkgsFor = system:
-      #   import inputs.nixpkgs {
-      #     localSystem = { inherit system; };
-      #   };
     in
     {
-      nixosModules = builtins.listToAttrs (findModules ./modules);
-      nixosProfiles = builtins.listToAttrs (findModules ./profiles);
-      nixosRoles = import ./roles;
+      nixosModules.modules = builtins.listToAttrs (findModules ./modules);
+      nixosModules.profiles = builtins.listToAttrs (findModules ./profiles);
+      nixosModules.roles = import ./roles;
 
       nixosConfigurations = with nixpkgs.lib;
         let
@@ -65,13 +59,11 @@
           mkHost = name:
             let
               system = builtins.readFile (./machines + "/${name}/system.txt");
-              # pkgs = pkgsFor system;
             in
             nixosSystem {
               inherit system;
               modules = [
                 (import (./machines + "/${name}"))
-                # { nixpkgs.pkgs = pkgs; }
                 { networking.hostName = name; }
               ];
               specialArgs = { inherit inputs; };

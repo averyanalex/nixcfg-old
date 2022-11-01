@@ -2,11 +2,13 @@
 
 {
   imports = [
-    inputs.self.nixosRoles.desktop
-    inputs.self.nixosProfiles.openrgb
+    inputs.self.nixosModules.roles.desktop
+    inputs.self.nixosModules.profiles.openrgb
     ./hardware.nix
     ./mounts.nix
   ];
+
+  system.stateVersion = "22.05";
 
   networking = {
     firewall.enable = false;

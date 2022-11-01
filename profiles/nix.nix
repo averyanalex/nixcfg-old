@@ -2,10 +2,14 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-    };
 
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+      keep-outputs = true;
+      keep-derivations = true;
+
+      allowed-users = [ "@users" ];
+      trusted-users = [ "@wheel" ];
+
+      experimental-features = "nix-command flakes";
+    };
   };
 }

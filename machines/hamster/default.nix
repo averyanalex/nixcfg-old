@@ -2,9 +2,11 @@
 
 {
   imports = [
-    inputs.self.nixosRoles.desktop
-    inputs.self.nixosProfiles.netman
+    inputs.self.nixosModules.roles.desktop
+    inputs.self.nixosModules.profiles.netman
     ./hardware.nix
     ./mounts.nix
   ];
+
+  system.stateVersion = "22.05";
 }

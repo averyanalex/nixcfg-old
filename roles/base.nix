@@ -1,31 +1,33 @@
 { inputs, ... }: {
-  imports = (with inputs.self.nixosModules; [
+  imports = (with inputs.self.nixosModules.modules; [
     nebula-averyan
     persist
-  ]) ++ (with inputs.self.nixosProfiles; [
-    gpg
-    zsh
-    direnv
-    git
-    micro
-    utils
-    zoxide
-
-    agenix
-    boot
-    dns
-    home
-    locale
-    misc
-    nebula-averyan
-    nix
-    nur
-    persist
-    ssh-server
-    unstable
-    user
-    userdirs
-    xdg
-    yggdrasil
-  ]);
+  ]) ++ (with inputs.self.nixosModules.profiles;
+    with shell; [
+      gpg
+      zsh
+      direnv
+      exa
+      fzf
+      git
+      micro
+      utils
+      zoxide
+    ] ++ [
+      agenix
+      boot
+      dns
+      home
+      locale
+      nebula-averyan
+      nix
+      nur
+      persist
+      ssh-server
+      unstable
+      userdirs
+      users
+      xdg
+      yggdrasil
+    ]);
 }

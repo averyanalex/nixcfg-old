@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }: {
   boot = {
     loader = {
-      timeout = lib.mkForce 2;
+      timeout = lib.mkForce 3;
     };
     kernelParams = [ "modeset" "nofb" ];
 

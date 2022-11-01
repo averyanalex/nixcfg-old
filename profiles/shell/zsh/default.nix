@@ -13,17 +13,6 @@
     # Beautiful cat
     programs.bat.enable = true;
 
-    # Fuzzy search
-    programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    # Beautiful ls
-    programs.exa = {
-      enable = true;
-    };
-
     programs.zsh = {
       enable = true;
 
@@ -42,10 +31,6 @@
       autocd = true;
 
       shellAliases = {
-        ls = "${pkgs.exa}/bin/exa --icons -l";
-        la = "${pkgs.exa}/bin/exa --icons -la";
-        lt = "${pkgs.exa}/bin/exa --icons --tree";
-
         ip = "ip --color=auto";
 
         # nixupd = ''sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
