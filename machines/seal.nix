@@ -34,7 +34,7 @@
     interfaces.enp1s0 = {
       ipv4 = {
         addresses = [{
-          address = "192.168.3.10";
+          address = "192.168.3.30";
           prefixLength = 24;
         }];
       };
