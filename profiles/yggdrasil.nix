@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   services.yggdrasil = {
     enable = true;
-    package = pkgs.unstable.yggdrasil;
+    group = "wheel";
+    # package = pkgs.unstable.yggdrasil;
     persistentKeys = true;
     config = {
       Peers = [
@@ -12,8 +13,11 @@
     };
   };
 
-  systemd.services.yggdrasil.wants = [ "systemd-tmpfiles-setup.service" ];
-  systemd.services.yggdrasil.after = [ "systemd-tmpfiles-setup.service" ];
+  systemd.services.yggdrasil = {
+    # preStart = lib.mkBefore "mkdir /run/yggdrasil";
+    wants = [ "systemd-tmpfiles-setup.service" ];
+    after = [ "systemd-tmpfiles-setup.service" ];
+  };
 
   persist.state.dirs = [ "/var/lib/yggdrasil" ];
 }
