@@ -15,6 +15,7 @@
       zoxide
     ] ++ [
       agenix
+      apparmor
       boot
       dns
       home
