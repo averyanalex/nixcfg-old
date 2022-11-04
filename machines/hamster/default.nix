@@ -4,6 +4,7 @@
   imports = [
     inputs.self.nixosModules.roles.desktop
     inputs.self.nixosModules.profiles.netman
+    inputs.self.nixosModules.profiles.bluetooth
     ./hardware.nix
     ./mounts.nix
   ];
