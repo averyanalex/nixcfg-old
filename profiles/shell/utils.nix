@@ -8,6 +8,8 @@
       killall
       btop
       htop
+
+      unzip
     ];
   };
 }
