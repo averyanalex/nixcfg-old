@@ -18,6 +18,7 @@
       vscode
     ] ++ (with games; [
       minecraft
+      xonotic
     ]) ++ [
       sway
 
