@@ -11,6 +11,7 @@
       d3.openscad
 
       firefox
+      office
       open
       telegram
       tex
