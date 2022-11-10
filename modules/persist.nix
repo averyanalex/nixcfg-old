@@ -19,23 +19,23 @@ in
   options =
     let
       inherit (lib) mkOption mkEnableOption;
-      inherit (lib.types) listOf path str;
+      inherit (lib.types) path listOf either str attrs;
 
       common = {
         dirs = mkOption {
-          type = listOf path;
+          type = listOf (either str attrs);
           default = [ ];
         };
         files = mkOption {
-          type = listOf str;
+          type = listOf (either str attrs);
           default = [ ];
         };
         homeDirs = mkOption {
-          type = listOf str;
+          type = listOf (either str attrs);
           default = [ ];
         };
         homeFiles = mkOption {
-          type = listOf str;
+          type = listOf (either str attrs);
           default = [ ];
         };
       };
