@@ -8,6 +8,7 @@ in
   imports = [
     inputs.self.nixosModules.roles.server
     inputs.self.nixosModules.profiles.libvirt
+    inputs.self.nixosModules.profiles.pgsql
     ./hardware.nix
     ./mounts.nix
   ];
