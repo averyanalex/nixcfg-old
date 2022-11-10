@@ -3,8 +3,8 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./physical.nix
-    ./sdboot.nix
+    ../../hardware/physical.nix
+    ../../hardware/sdboot.nix
   ];
 
   # Storage
