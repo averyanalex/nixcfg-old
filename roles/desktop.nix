@@ -24,12 +24,12 @@
 
       autologin
       flatpak
+      kernel
       music
       nebula-frsqr
       pipewire
       sync
       tank
       waydroid
-      xanmod
     ]);
 }
