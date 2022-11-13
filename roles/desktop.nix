@@ -11,6 +11,7 @@
       d3.openscad
 
       firefox
+      kdenlive
       office
       open
       telegram
