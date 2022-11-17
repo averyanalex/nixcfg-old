@@ -12,6 +12,7 @@
 
       firefox
       kdenlive
+      obs
       office
       open
       openboard
