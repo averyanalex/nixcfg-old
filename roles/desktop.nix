@@ -14,6 +14,7 @@
       kdenlive
       office
       open
+      openboard
       telegram
       tex
       vscode
